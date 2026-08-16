@@ -6,7 +6,7 @@
   <title>London Parking Finder — Free Parking &amp; Permit Zones</title>
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%230284c7'/%3E%3Ctext x='50' y='72' font-size='64' font-family='Arial' font-weight='bold' fill='white' text-anchor='middle'%3EP%3C/text%3E%3C/svg%3E" />
   <link rel="stylesheet" href="vendor/leaflet/leaflet.css" />
-  <link rel="stylesheet" href="css/styles.css?v=3" />
+  <link rel="stylesheet" href="css/styles.css?v=4" />
 </head>
 <body>
   <div id="app">
@@ -64,6 +64,8 @@
           <span class="swatch cpz"></span><span>Permit zone outlines (CPZ, indicative)</span></label>
         <label class="toggle"><input type="checkbox" id="layer-cpz-free-now" checked />
           <span class="swatch cpz-free"></span><span>Recolour zones free at chosen time</span></label>
+        <label class="toggle"><input type="checkbox" id="auto-scan" checked />
+          <span class="swatch auto"></span><span>Auto-refresh results as you move the map</span></label>
       </section>
 
       <section class="panel results-panel">
@@ -94,7 +96,7 @@
       <footer class="sidebar-footer">
         <p>Map data © <a href="https://www.openstreetmap.org/copyright" target="_blank"
              rel="noopener">OpenStreetMap</a> contributors. Zone data is indicative, not legal advice.</p>
-        <p class="version">Version 3 — road-level free parking</p>
+        <p class="version">Version 4 — time-aware roads, auto-refresh</p>
       </footer>
     </aside>
 
@@ -102,7 +104,7 @@
   </div>
 
   <script src="vendor/leaflet/leaflet.js"></script>
-  <script src="js/data.js?v=3"></script>
-  <script src="js/app.js?v=3"></script>
+  <script src="js/data.js?v=4"></script>
+  <script src="js/app.js?v=4"></script>
 </body>
 </html>

@@ -166,6 +166,7 @@ button.primary:hover { background: #0369a1; }
 .swatch.free { background: var(--green); }
 .swatch.road { background: linear-gradient(90deg, var(--green) 50%, var(--amber) 50%); }
 .swatch.tfl { background: #3b82f6; }
+.swatch.auto { background: var(--bg-panel-2); border: 1px solid var(--accent); }
 .swatch.cpz { background: var(--red); opacity: 0.7; }
 .swatch.cpz-free { background: var(--green); opacity: 0.5; border: 1px dashed var(--green); }
 
