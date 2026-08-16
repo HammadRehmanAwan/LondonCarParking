@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>London Parking Finder — Free Parking &amp; Permit Zones</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%230284c7'/%3E%3Ctext x='50' y='72' font-size='64' font-family='Arial' font-weight='bold' fill='white' text-anchor='middle'%3EP%3C/text%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="vendor/leaflet/leaflet.css" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <div id="app">
+    <aside id="sidebar">
+      <header class="sidebar-header">
+        <h1>🅿️ London Parking Finder</h1>
+        <p class="tagline">Free parking areas &amp; resident permit (CPZ) zones</p>
+      </header>
+
+      <section class="panel search-panel">
+        <div class="search-row">
+          <input id="search-input" type="search" placeholder="Search a place, street or postcode…"
+                 autocomplete="off" />
+          <button id="search-btn" title="Search">🔍</button>
+        </div>
+        <div class="search-row">
+          <button id="locate-btn" class="wide-btn">📍 Use my location</button>
+          <button id="scan-btn" class="wide-btn primary">♻️ Find free parking here</button>
+        </div>
+        <p id="status-line" class="status" hidden></p>
+      </section>
+
+      <section class="panel time-panel">
+        <h2>When are you parking?</h2>
+        <div class="time-row">
+          <label class="toggle">
+            <input type="checkbox" id="use-now" checked />
+            <span>Right now</span>
+          </label>
+          <select id="day-select" disabled>
+            <option value="1">Monday</option>
+            <option value="2">Tuesday</option>
+            <option value="3">Wednesday</option>
+            <option value="4">Thursday</option>
+            <option value="5">Friday</option>
+            <option value="6">Saturday</option>
+            <option value="0">Sunday</option>
+          </select>
+          <input type="time" id="time-select" value="12:00" disabled />
+        </div>
+        <p class="hint">Permit zones are usually <strong>free to everyone outside their controlled
+          hours</strong> — the map recolours zones green when they're uncontrolled at the chosen time.</p>
+      </section>
+
+      <section class="panel layers-panel">
+        <h2>Map layers</h2>
+        <label class="toggle"><input type="checkbox" id="layer-free" checked />
+          <span class="swatch free"></span><span>Free parking (live OpenStreetMap data)</span></label>
+        <label class="toggle"><input type="checkbox" id="layer-cpz" checked />
+          <span class="swatch cpz"></span><span>Permit / controlled parking zones (CPZ)</span></label>
+        <label class="toggle"><input type="checkbox" id="layer-cpz-free-now" checked />
+          <span class="swatch cpz-free"></span><span>Highlight zones free at chosen time</span></label>
+      </section>
+
+      <section class="panel results-panel">
+        <h2 id="results-title">Results</h2>
+        <ul id="results-list">
+          <li class="empty">Move the map to an area and press
+            <strong>“Find free parking here”</strong> to load free car parks and bays from
+            OpenStreetMap.</li>
+        </ul>
+      </section>
+
+      <section class="panel tips-panel">
+        <h2>Know before you park</h2>
+        <ul class="tips">
+          <li>Outside a CPZ's controlled hours, permit bays and single yellow lines are normally free —
+            <strong>always check the sign on the street</strong>.</li>
+          <li>Double yellow lines mean no parking at any time.</li>
+          <li>Most of London is free on Sundays, but Westminster, the West End and some town centres
+            have Sunday controls.</li>
+          <li>Zone boundaries and hours shown here are indicative — confirm on the borough's website
+            (linked in each zone's popup).</li>
+        </ul>
+      </section>
+
+      <footer class="sidebar-footer">
+        <p>Map data © <a href="https://www.openstreetmap.org/copyright" target="_blank"
+             rel="noopener">OpenStreetMap</a> contributors. Zone data is indicative, not legal advice.</p>
+      </footer>
+    </aside>
+
+    <main id="map"></main>
+  </div>
+
+  <script src="vendor/leaflet/leaflet.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
