@@ -6,9 +6,15 @@ controlled parking zones (CPZs)** across London.
 ## Features
 
 - **Interactive map** of London (Leaflet + OpenStreetMap/CARTO tiles).
-- **Free parking search** — queries live OpenStreetMap data (via the Overpass
-  API) for car parks and parking areas tagged as fee-free in the current map
-  view, lists them in the sidebar, and links each one to driving directions.
+- **Road-level free parking** — queries live OpenStreetMap kerbside data
+  (`parking:left/right/both` and `parking:lane:*` tags via the Overpass API)
+  and colours actual road segments: **green** where kerbside parking is
+  fee-free, **dashed green** where parking is mapped with no fee recorded, and
+  **amber** where it needs a permit or payment.
+- **Free car park search** — OpenStreetMap car parks tagged fee-free in the
+  current view, listed in the sidebar with driving directions.
+- **TfL car parks (second source)** — official Transport for London car parks
+  from the TfL Unified API, shown as blue markers.
 - **Permit zone (CPZ) layer** — indicative outlines of well-known controlled
   parking zones across 20+ boroughs, each with its typical controlled hours and
   a link to the borough's official parking pages.
@@ -44,8 +50,16 @@ js/app.js       – map, time logic, Overpass/Nominatim integration
 
 ## Data & accuracy
 
-- Free-parking markers come from **OpenStreetMap** (`amenity=parking` with
-  `fee=no`) — community-maintained data, refreshed live on every scan.
+Multiple live sources are combined on every scan:
+
+- **OpenStreetMap kerbside tags** (`parking:left/right/both`,
+  `parking:lane:*`, fee/condition/access subtags) drive the green/amber road
+  colouring. Coverage varies by area — an uncoloured road just means nobody
+  has mapped its kerbside parking yet.
+- **OpenStreetMap car parks** (`amenity=parking` with `fee=no`) provide the
+  green fee-free car-park markers.
+- **TfL Unified API** (`Place/Type/CarPark`) provides the blue official
+  Transport for London car-park markers.
 - CPZ boundaries and hours in `js/data.js` are **simplified and indicative**.
   Boroughs change zones and hours frequently; every zone popup links to the
   council's own parking pages for confirmation.

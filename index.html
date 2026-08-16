@@ -53,26 +53,34 @@
 
       <section class="panel layers-panel">
         <h2>Map layers</h2>
+        <label class="toggle"><input type="checkbox" id="layer-roads" checked />
+          <span class="swatch road"></span><span>Roads: <strong>green</strong> = free kerbside,
+            dashed = likely free, <strong>amber</strong> = permit/paid (OpenStreetMap)</span></label>
         <label class="toggle"><input type="checkbox" id="layer-free" checked />
-          <span class="swatch free"></span><span>Free parking (live OpenStreetMap data)</span></label>
+          <span class="swatch free"></span><span>Free car parks (OpenStreetMap)</span></label>
+        <label class="toggle"><input type="checkbox" id="layer-tfl" checked />
+          <span class="swatch tfl"></span><span>TfL car parks (official, usually paid)</span></label>
         <label class="toggle"><input type="checkbox" id="layer-cpz" checked />
-          <span class="swatch cpz"></span><span>Permit / controlled parking zones (CPZ)</span></label>
+          <span class="swatch cpz"></span><span>Permit zone outlines (CPZ, indicative)</span></label>
         <label class="toggle"><input type="checkbox" id="layer-cpz-free-now" checked />
-          <span class="swatch cpz-free"></span><span>Highlight zones free at chosen time</span></label>
+          <span class="swatch cpz-free"></span><span>Recolour zones free at chosen time</span></label>
       </section>
 
       <section class="panel results-panel">
         <h2 id="results-title">Results</h2>
         <ul id="results-list">
           <li class="empty">Move the map to an area and press
-            <strong>“Find free parking here”</strong> to load free car parks and bays from
-            OpenStreetMap.</li>
+            <strong>“Find free parking here”</strong> to highlight free roads and load car
+            parks from OpenStreetMap and TfL.</li>
         </ul>
       </section>
 
       <section class="panel tips-panel">
         <h2>Know before you park</h2>
         <ul class="tips">
+          <li><strong>Green roads</strong> have kerbside parking tagged fee-free; dashed green roads
+            have parking mapped with no fee recorded (usually free). <strong>Amber roads</strong>
+            need a permit or payment.</li>
           <li>Outside a CPZ's controlled hours, permit bays and single yellow lines are normally free —
             <strong>always check the sign on the street</strong>.</li>
           <li>Double yellow lines mean no parking at any time.</li>

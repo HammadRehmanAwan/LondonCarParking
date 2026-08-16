@@ -164,6 +164,8 @@ button.primary:hover { background: #0369a1; }
 }
 
 .swatch.free { background: var(--green); }
+.swatch.road { background: linear-gradient(90deg, var(--green) 50%, var(--amber) 50%); }
+.swatch.tfl { background: #3b82f6; }
 .swatch.cpz { background: var(--red); opacity: 0.7; }
 .swatch.cpz-free { background: var(--green); opacity: 0.5; border: 1px dashed var(--green); }
 
@@ -213,6 +215,7 @@ button.primary:hover { background: #0369a1; }
 }
 
 .badge.free-badge { background: rgba(34, 197, 94, 0.2); color: var(--green); }
+.badge.tfl-badge { background: rgba(59, 130, 246, 0.2); color: #60a5fa; }
 .badge.controlled-badge { background: rgba(239, 68, 68, 0.2); color: var(--red); }
 
 .tips {
@@ -256,6 +259,7 @@ button.primary:hover { background: #0369a1; }
 
 .popup-status-free { color: var(--green); font-weight: 700; }
 .popup-status-controlled { color: var(--red); font-weight: 700; }
+.popup-status-tfl { color: #60a5fa; font-weight: 700; }
 
 .leaflet-popup-content a { color: var(--accent); }
 
