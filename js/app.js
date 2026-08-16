@@ -253,6 +253,17 @@
 
   // ---------- Search & geolocation ----------
 
+  /** Move the map, then scan once the move (and its animation) has finished. */
+  function goToAndScan(latlng, zoom) {
+    const target = L.latLng(latlng);
+    if (map.getZoom() === zoom && map.getCenter().distanceTo(target) < 5) {
+      scanForFreeParking();
+      return;
+    }
+    map.once("moveend", scanForFreeParking);
+    map.setView(target, zoom);
+  }
+
   async function searchPlace() {
     const query = searchInput.value.trim();
     if (!query) return;
@@ -270,9 +281,8 @@
         return;
       }
       const place = results[0];
-      map.setView([Number(place.lat), Number(place.lon)], 15);
       setStatus("");
-      scanForFreeParking();
+      goToAndScan([Number(place.lat), Number(place.lon)], 15);
     } catch (err) {
       setStatus("Search failed — please try again.", true);
     }
@@ -296,9 +306,8 @@
         })
           .bindPopup("You are here")
           .addTo(map);
-        map.setView(latlng, 15);
         setStatus("");
-        scanForFreeParking();
+        goToAndScan(latlng, 15);
       },
       () => setStatus("Could not get your location — check browser permissions.", true),
       { enableHighAccuracy: true, timeout: 10000 }
