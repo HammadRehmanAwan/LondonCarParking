@@ -238,6 +238,8 @@ button.primary:hover { background: #0369a1; }
 
 .sidebar-footer a { color: var(--accent); }
 
+.sidebar-footer .version { color: var(--accent); margin-top: 4px; }
+
 /* Leaflet popup theming */
 .leaflet-popup-content-wrapper,
 .leaflet-popup-tip {
